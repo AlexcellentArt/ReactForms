@@ -26,7 +26,7 @@ function Authenticate({ token }) {
     }
   }
   function parseData() {
-    return Object.keys(data).map((key) => {return<>      <div className="data">
+    return Object.keys(data).map((key,id) => {return<>      <div className="data" key={id}>
         <p className="importantText">{key} = </p>
         <p>{data[key]}</p>
         <br />
@@ -34,17 +34,17 @@ function Authenticate({ token }) {
     });
   }
   return (
-    <>
+    <div>
       <h2>Authenticate</h2> {successMessage && <p>{successMessage}</p>}
       {error && <p>{error}</p>}
       {data && (
-        <div>
-          <h3>~~~ Data ~~~</h3>
+        <div key="databox">
+          <h3 key ="dataHeader">~~~ Data ~~~</h3>
           {parseData()}
         </div>
       )}
       <button onClick={handleClick}>Authenticate Token</button>
-    </>
+    </div>
   );
 }
 
